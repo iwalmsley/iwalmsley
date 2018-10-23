@@ -1,8 +1,9 @@
 set ts=2 sw=2
+
 call plug#begin()
 "ga
 Plug 'junegunn/vim-easy-align'
-"autocomplete
+":autocomplete
 Plug 'Shougo/neocomplete.vim'
 "better making
 Plug 'tpope/vim-dispatch'
@@ -10,7 +11,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'ervandew/supertab'
 "snippets of code
 Plug 'honza/vim-snippets'
-"autoclose
+"autoclosa
 Plug 'Townk/vim-autoclose'
 " gc
 Plug 'tomtom/tcomment_vim'
@@ -20,11 +21,18 @@ Plug 'janko-m/vim-test'
 Plug 'maksimr/vim-jsbeautify'
 " syntax checking
 Plug 'vim-syntastic/syntastic'
+" better making
 Plug 'neomake/neomake'
-" git
+" git op
 Plug 'tpope/vim-fugitive'
-" Gbrowse
+" gitlab op
 Plug 'shumphrey/fugitive-gitlab.vim'
+" better directory
+Plug 'scrooloose/nerdtree'
+" prettify yaml
+Plug 'stephpy/vim-yaml'
+" white space
+Plug 'bronson/vim-trailing-whitespace'
 call plug#end()
 
 " Start interactive EasyAlign in visual mode (e.g. vipga)
@@ -34,6 +42,4 @@ nmap ga <Plug>(EasyAlign)
 
 " Enable neocomplete
 let g:neocomplete#enable_at_startup = 1
-
-" Gitlab Domain Here
-" let g:fugitive_gitlab_domains = ['']
+let g:fugitive_gitlab_domains = []
