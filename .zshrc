@@ -70,44 +70,24 @@ ZSH_THEME="minimal"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git tmux)
+plugins=(git tmux kubectl fzf direnv)
 
 zstyle ':omz:alpha:lib:git' async-prompt no
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+export PATH=/home/iainw/.local/bin:$PATH
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# fzf
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
-# User configuration
+# zoxide
+eval "$(zoxide init zsh)"
 
 # NVM Config
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-export PATH=/home/iainw/.local/bin:$PATH
 
 # Kubectl completion
 if [ /usr/bin/kubectl ]; then source <(kubectl completion zsh); fi
@@ -117,9 +97,4 @@ eval "$(direnv hook zsh)"
 
 # Aliases
 alias kc="kubectl"
-alias proj="cd ~/projects"
-
-# Catatalogue & DataLabs
-alias cr='cd ~/projects/catalogue && docker compose down && docker compose up --build -d && docker compose logs -f &'
-alias dr='cd ~/projects/datalab/code/development-env && docker compose -f ./docker/docker-compose-mongo.yml  -f ./docker/docker-compose-app.yml up'
-alias dcode='cd ~/projects/datalab/ && code datalab.code-workspace'
+alias proj="mkdir -p ~/projects  && cd ~/projects"
