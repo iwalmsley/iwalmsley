@@ -8,6 +8,7 @@ shell-tools:
 	@echo "Installing shell and terminal tools..."
 	sudo apt-get update
 	sudo apt-get install -y zsh tmux fzf direnv htop
+	cp .zshrc ~/
 	@echo "Installing zoxide..."
 	curl -sS https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | bash
 
@@ -30,7 +31,11 @@ dev-tools:
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
 	@echo "Installing vim plugins..."
+	cp .vimrc ~/
 	vim +PlugInstall +qall
+
+	@echo "Installing Oh My Zsh..."
+	sh -c "$$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" || true
 
 k8s-tools:
 	@echo "Installing Kubernetes tools..."
